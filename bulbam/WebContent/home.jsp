@@ -21,7 +21,7 @@
            <li><a href="#">Night</a></li>
            <li><a href="#">List</a></li>
             <a class="navbar-brand navbar-right" href="#">
-                <img alt="brand" src="/project/include/img/dgsw_logo.png">
+                <img alt="brand" src="include/img/dgsw_logo.png">
             </a>
       </ul>
     </header>
@@ -40,11 +40,11 @@
   <div class="carousel-inner" role="listbox">
 
     <div class="item active">
-      <img src="/project/include/img/list1.jpg" alt="img1">
+      <img src="include/img/list1.jpg" alt="img1">
     </div>
     
     <div class="item">
-      <img src="/project/include/img/list1.jpg" alt="img2">
+      <img src="include/img/list1.jpg" alt="img2">
     </div>
 
   </div>
@@ -77,7 +77,7 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="/project/include/js/bootstrap.min.js"></script>
+<script src="include/js/bootstrap.min.js"></script>
 <script>
     $('.carousel').carousel()
 </script>

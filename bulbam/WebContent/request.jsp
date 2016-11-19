@@ -21,7 +21,7 @@
            <li class="active"><a href="#">Night</a></li>
            <li><a href="#">List</a></li>
             <a class="navbar-brand navbar-right" href="#">
-                <img alt="brand" src="/project/include/img/dgsw_logo.png">
+                <img alt="brand" src="include/img/dgsw_logo.png">
             </a>
       </ul>
     </header>
@@ -60,6 +60,6 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="project/include/js/bootstrap.min.js"></script>
+<script src="include/js/bootstrap.min.js"></script>
 
 </html>
