@@ -1,3 +1,5 @@
 bulbam/.classpath
 bulbam/.classpath
 *.classpath
+*.component
+*.classpath
