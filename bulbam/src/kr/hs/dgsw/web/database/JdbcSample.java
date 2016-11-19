@@ -18,7 +18,7 @@ public class JdbcSample
 		{
 			connection = 
 				DriverManager.getConnection(
-				"jdbc:mysql://114.108.167.90/dgsw?useUnicode=true&characterEncoding=utf8", 
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
 				"dgsw", "dnrhddltks");
 			
 			pstmt = connection.prepareStatement("SELECT * FROM artist");
