@@ -1,4 +1,4 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -29,8 +29,8 @@
     <div class="container"> 
      <div class="jumbotron">
       <div class="container text-center">
-        <h1 style="color:#b82601">심자 취소 할 사람~!</h1><br>
-        <p>정말로???</p>
+        <h1 style="color:#b82601">ì¬ì ì·¨ì í  ì¬ë~!</h1><br>
+        <p>ì ë§ë¡???</p>
       </div>
     </div>
     <div class="center">
@@ -40,7 +40,7 @@
       <input type="hidden" name="night_study" value="no">
       <button type="submit" class="btn btn-danger btn-lg btn-block"> 
         <span class="glyphicon glyphicon-hand-down" style="font-size:25px"></span>
-          심야 자율 학습 취소
+          ì¬ì¼ ìì¨ íìµ ì·¨ì
         <span class="glyphicon glyphicon-hand-down" style="font-size:25px"></span>
       </button>
 
