@@ -12,7 +12,6 @@
     <![endif]-->
     <script src="include/js/jquery-3.0.0.min.js"></script>
     <link rel='stylesheet' href="include/css/bootstrap.css" />
-    <link href="include/css/custom.css" rel="stylesheet">
     <style>
         .mbd_form{
             text-align: center;
@@ -25,6 +24,64 @@
             margin-bottom: 80px;
         }
     </style>
+    <script>
+    $(document).ready(function(){
+        $("#teacher").change(function(){
+            if($("#teacher").is(":checked")){
+            	//$('.StuGroup').remove();
+            	document.getElementsByClassName("StuGroup")[0].innerHTML = '';
+                
+            }
+        });
+        $("#student").change(function(){
+            if($("#student").is(":checked")){
+            	
+            	document.getElementsByClassName("TeaGroup")[0].innerHTML = '';
+            	
+            	var output = '';
+            	output += '<div class="form-group">';
+                output += '	<label for="group">학년::반</label>';
+                output += '	<select class="form-control" name="group">';
+                output += ' 	<option>1학년1반</option>';
+                output += '     <option>1학년2반</option>';
+                output += '     <option>1학년3반</option>';
+                output += ' </select>';
+            	output += '</div>';
+            	
+            	output += '<div class="form-group">';
+                output += '  <label for="gender">번호</label>';
+                output += '     <select class="form-control" name="identi">';
+                output += '           <option>1</option>';
+                output += '           <option>2</option>';
+                output += '           <option>3</option>';
+                output += '           <option>4</option>';
+                output += '           <option>5</option>';
+                output += '           <option>6</option>';
+                output += '           <option>7</option>';
+                output += '           <option>8</option>';
+                output += '           <option>9</option>';
+                output += '           <option>10</option>';
+                output += '           <option>11</option>';
+                output += '           <option>12</option>';
+                output += '           <option>13</option>';
+                output += '           <option>14</option>';
+                output += '           <option>15</option>';
+                output += '           <option>16</option>';
+                output += '           <option>17</option>';
+                output += '           <option>18</option>';
+                output += '           <option>19</option>';
+                output += '           <option>20</option>';
+                output += '    </select>';
+                output += '</div>';
+            	
+            	
+            	
+                document.getElementsByClassName("StuGroup")[0].innerHTML = output;
+            }
+        });
+    });
+    
+    </script>
 </head>
 <body>
     <div class="container">
@@ -59,46 +116,33 @@
                 <input type="text" class="form-control" id="username" name="username" placeholder="이름">
             </div>
 
-            <div class="radio">
-  				<label>
-   					 선생님 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-   					 학생  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
- 				</label>
+            <div class="radio-inline">
+				  <label>
+				    <input type="radio" name="school" id="teacher" value="teacher">
+				   	선생님
+				  </label>
+			</div>
+			<div class="radio-inline">
+				  <label>
+				    <input type="radio" name="school" id="student" value="student">
+				    학생
+				  </label>
 			</div>
             
-            <div class="form-group">
-                <label for="group">학년::반</label>
-                <select class="form-control" name="group">
-                    <option>1학년1반</option>
-                    <option>1학년2반</option>
-                    <option>1학년3반</option>
-                </select>
+            
+            
+            <!-- 선생님 -->
+            <div class="TeaGroup">
+            	
+            	
+            	
             </div>
-
-            <div class="form-group">
-                <label for="gender">번호</label>
-                <select class="form-control" name="identi">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                </select>
+            
+            
+            <!-- 학생 -->
+            <div class="StuGroup">
+	            
+	            
             </div>
 
             <div class="controls">
