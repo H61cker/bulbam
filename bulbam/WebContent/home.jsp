@@ -19,8 +19,8 @@
     <header>
       <ul class="nav nav-tabs">
            <li class="active"><a href="#">Home</a></li>
-           <li><a href="#">Night</a></li>
-           <li><a href="#">List</a></li>
+           <li><a href="./request.jsp">Night</a></li>
+           <li><a href="./list.jsp">List</a></li>
             <a class="navbar-brand navbar-right" href="#">
                 <img alt="brand" src="include/img/dgsw_logo.png">
             </a>
