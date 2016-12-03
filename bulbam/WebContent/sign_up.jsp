@@ -71,17 +71,23 @@
             	output += '<div class="form-group">';
                 output += '	<label for="group">학년::반</label>';
                 output += '	<select class="form-control" name="group">';
-                output += ' 	<option>1학년1반</option>';
-                output += '     <option>1학년2반</option>';
-                output += '     <option>1학년3반</option>';
+                output += ' 	<option value="1:1">1학년1반</option>';
+                output += '     <option value="1:2">1학년2반</option>';
+                output += '     <option value="1:3">1학년3반</option>';
                 output += ' </select>';
             	output += '</div>';
             	
             	output += '<div class="form-group">';
                 output += '  <label for="gender">번호</label>';
                 output += '     <select class="form-control" name="identi">';
-                output += '           <option>1</option>';
-                output += '           <option>2</option>';
+                
+                for (var i = 1 ; i <= 20 ; i++)
+                {
+                	output += '           <option value="' + i +'">' + i + '</option>';
+                }
+/* 
+                output += '           <option value="1">1</option>';
+                output += '           <option value="1">2</option>';
                 output += '           <option>3</option>';
                 output += '           <option>4</option>';
                 output += '           <option>5</option>';
@@ -99,7 +105,7 @@
                 output += '           <option>17</option>';
                 output += '           <option>18</option>';
                 output += '           <option>19</option>';
-                output += '           <option>20</option>';
+                output += '           <option>20</option>'; */
                 output += '    </select>';
                 output += '</div>';
             	

@@ -10,16 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.hs.dgsw.web.service.SampleService;
+import kr.hs.dgsw.web.service.UserService;
 
 /**
  * Servlet implementation class SampleServlet
  */
-@WebServlet("user_register")
+@WebServlet("/user_register")
 public class UserRegisterServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-	
-	
 	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,16 +33,20 @@ public class UserRegisterServlet extends HttpServlet
 		String password = request.getParameter("password");
 		String group = request.getParameter("group");
 		String identi = request.getParameter("identi");
+		String type = request.getParameter("school");
 
-		System.out.println(name+" "+email+" "+password+" "+group+" "+identi);
-		SampleService sampleService = SampleService.getInstance();
-		sampleService.saveVisit(name);
-
-		PrintWriter out = response.getWriter();
-		out.println("<h1>?•ˆ?…•?•˜?„¸?š” " + name + "</h1>");
-		out.println("<p>?‹¹?‹ ??  " + sampleService.getVisitCount(name) + "ë²ˆì¬ ë°©ë¬¸??…?‹ˆ?‹¤.");
+		System.out.println(name+" "+email+" "+password+" "+group+" "+identi + "  " + type);
 		
-		out.close();
+		UserService userService = UserService.getInstance();
+		userService.registerUser(email, password, name, type, group, identi);
+		
+		response.sendRedirect("home.jsp");
+
+		/*PrintWriter out = response.getWriter();
+		out.println("<h1>?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ " + name + "</h1>");
+		
+		
+		out.close();*/
 	}
 
 	
