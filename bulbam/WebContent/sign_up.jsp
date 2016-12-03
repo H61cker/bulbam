@@ -25,6 +25,35 @@
         }
     </style>
     <script>
+    
+  	
+ 	function checkInput()
+ 	{
+ 		
+ 		var email = $("#id").val();
+ 		var password = $("#password").val();
+ 		var name = $("#username").val();
+ 		
+	//	console.log(email + "  " + password + "  " + name);
+	
+		if(email.trim()==""){
+			alert("이메일이 입력되지 않았습니다.");
+			return false;
+		}
+		
+		if(password.trim()==""){
+			alert("비밀번호가 입력되지 않았습니다.");
+			return false;
+		}
+		
+		if(name.trim()==""){
+			alert("이름이 입력되지 않았습니다.");
+			return false;
+		}
+ 		
+		return true;
+ 	}
+  	
     $(document).ready(function(){
     	
     	/*
@@ -37,15 +66,8 @@
 			필수 입력항목 검사
     	*/
     	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+    	/* 변수 초기화 */
+      	
     	
     	
         $("#teacher").change(function(){
@@ -116,7 +138,7 @@
 <!--   아이디 : userid 비밀번호 : password 이름 : username , 성별 : gender , 학년::반 : group  번호 : identi  -->
 
 
-        <form class="mbd_form" action="/mbd/member/join" method="post">
+        <form class="mbd_form" action="user_register" method="post" onsubmit="return checkInput();">
             <label for="id">이메일</label>
             <div class="input-group">
                 <span class="input-group-addon"> <span class="glyphicon glyphicon-user"> </span> </span>
