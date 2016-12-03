@@ -16,6 +16,8 @@ public class JdbcSample
 		
 		try
 		{
+			Class.forName("com.mysql.jdbc.Driver");     
+			
 			connection = 
 				DriverManager.getConnection(
 				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
