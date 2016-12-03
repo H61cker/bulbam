@@ -26,6 +26,28 @@
     </style>
     <script>
     $(document).ready(function(){
+    	
+    	/*
+    		email : id
+
+			password : password
+
+			name : username
+
+			필수 입력항목 검사
+    	*/
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
         $("#teacher").change(function(){
             if($("#teacher").is(":checked")){
             	//$('.StuGroup').remove();
