@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import kr.hs.dgsw.web.domain.User;
+
 public final class UserService
 {
 	private static UserService instance = new UserService();
@@ -121,5 +123,85 @@ public final class UserService
 		
 	}
 
-	
+	public User getUser(String email)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		User user = null;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT * FROM user ");
+			sql.append(" WHERE login_id = ? ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			if (rs.next())
+			{
+				user = new User();
+				
+				user.setUserId(rs.getInt("user_id"));
+				user.setGrade(rs.getInt("grade"));
+				user.setClazz(rs.getInt("class"));
+				user.setNumber(rs.getInt("number"));
+				user.setLoginId(rs.getString("login_id"));
+				user.setUserName(rs.getString("user_name"));
+				user.setPassword(rs.getString("password"));
+				user.setType(rs.getString("type"));
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return user;
+	}
 }

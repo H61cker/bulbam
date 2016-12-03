@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String error = request.getParameter("error");
+
+%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -28,6 +32,36 @@
     </header>
     <p class="margin_top"></p>
 
+	<div>
+		<form method="post" action="login.do">
+<%
+	if (error != null)
+	{
+%>
+			<div>
+				등록되지 않았거나 비밀번호가 올바르지 않습니다.
+			</div>
+<%
+	}
+%>
+			<div>
+				<label>아이디</label>
+				<input type="text" name="id">
+			</div>
+		
+			<div>
+				<label>비밀번호</label>
+				<input type="password" name="password">
+			</div>
+		
+			<div>
+				<input type="submit" value="로그인">
+			</div>
+		
+		
+		</form>
+	
+	</div>
     
 
      <footer class="text-center margin_top">

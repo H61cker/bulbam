@@ -1,5 +1,19 @@
+<%@page import="kr.hs.dgsw.web.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+<%
+	
+	User user = (User)session.getAttribute("user"); 
+
+	if (user == null)
+	{
+		response.sendRedirect("login.jsp");
+		return;
+	}
+
+%>   
+  
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -13,8 +27,20 @@
       margin-top: 50px;
     }
   </style>
+  
+  <script type="text/javascript">
+  	
+  function logout()
+  {
+  	var form = document.getElementById("logoutForm");
+  	form.submit();
+  }
+  
+  </script>
 </head>
 <body>
+	<form id="logoutForm" method="post" action="logout.do">
+	</form>
   <div class="container">
     <header>
       <ul class="nav nav-tabs">
@@ -28,6 +54,7 @@
     </header>
     <p class="margin_top"></p>
     
+      <div><%= user.getUserName() %>님 환영합니다.  <a href="javascript:logout();">로그아웃</a></div>
 
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
