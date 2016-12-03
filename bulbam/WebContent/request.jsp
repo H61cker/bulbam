@@ -1,5 +1,20 @@
+<%@page import="kr.hs.dgsw.web.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
+<%
+	
+	User user = (User)session.getAttribute("user"); 
+
+	if (user == null)
+	{
+		response.sendRedirect("login.jsp");
+		return;
+	}
+
+%>
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -36,9 +51,8 @@
     </div>
     <div class="center">
     
-    <form class="margin_top" action="#" method="GET">
-      
-      <input type="hidden" name="night_study" value="yes">
+    <form class="margin_top" action="request.do" method="post">
+    
       <button type="submit" class="btn btn-success btn-lg btn-block"> 
         <span class="glyphicon glyphicon-hand-down" style="font-size:25px"></span>
           심야 자율 학습 신청!

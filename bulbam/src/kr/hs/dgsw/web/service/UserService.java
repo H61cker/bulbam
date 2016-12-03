@@ -22,6 +22,74 @@ public final class UserService
 		return instance;
 	}
 	
+	public void requestNightStudy(int user_id)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("INSERT INTO nightstudy ");
+			sql.append("  (user_id, time) ");
+			sql.append("VALUES ");
+			sql.append("  (?, now()) ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setInt(1, user_id);
+			
+			pstmt.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	public void registerUser(String email, String password, String userName, String type,
 			String group, String sNumber)
 	{
