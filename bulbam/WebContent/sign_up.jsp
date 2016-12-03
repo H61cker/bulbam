@@ -38,16 +38,6 @@
     	*/
     	
     	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
         $("#teacher").change(function(){
             if($("#teacher").is(":checked")){
             	//$('.StuGroup').remove();
