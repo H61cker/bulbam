@@ -1,4 +1,5 @@
-<%@page import="kr.hs.dgsw.web.domain.User"%>
+<%@page import="kr.hs.dgsw.web.service.UserService"%>
+<%@ page import="kr.hs.dgsw.web.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -50,6 +51,31 @@
       </div>
     </div>
     <div class="center">
+
+    <%
+	    Boolean checked=true;
+	    UserService service = UserService.getInstance();
+		checked = service.requestCheck(user.getUserId());
+
+		// 신청 했다면.
+		if(checked){
+		
+	%>
+    
+    <form class="margin_top" action="request_cancel.do" method="post">
+    	
+    	<button type="submit" class="btn bt-success btn-lg btn-block">
+    		<span class="glyphicon glyphicon-hand-down" style="font-size:25px"></span>
+    			심야 자율 학습 취소
+    		<span class="Glyphicon glyphicon-hand-down" style="font-size:25px"></span>
+    	</button>
+    	
+    </form>
+    <%
+	}
+	// 신청 안했다면.
+	else{
+    %>
     
     <form class="margin_top" action="request.do" method="post">
     
@@ -60,6 +86,9 @@
       </button>
 
     </form>
+    <%
+	}
+    %>
 
      </div>
      <footer class="text-center margin_top">

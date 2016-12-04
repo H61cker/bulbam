@@ -22,6 +22,161 @@ public final class UserService
 		return instance;
 	}
 	
+	public void requestNightStudyCancel(int user_id)
+	{
+		
+	}
+	
+	public boolean requestCheck(int user_id)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Boolean check = false;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			
+			// sql query : SELECT * FROM dgsw_sms.nightstudy WHERE time >= current_date() && user_id == user_id;
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT * FROM nightstudy ");
+			sql.append("  WHERE ");
+			sql.append("time >= current_date() && ");
+			sql.append("  (user_id = ?) ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setInt(1, user_id);
+			
+			rs = pstmt.executeQuery();
+			rs.last();
+	        int rowcount = rs.getRow();
+			
+	        
+			if(rowcount>0){
+				check = true;
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		return check;
+	}
+	
+	public void requestCancel(int user_id)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			
+			// sql query : SELECT * FROM dgsw_sms.nightstudy WHERE time >= current_date() && user_id == user_id;
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("DELETE FROM nightstudy ");
+			sql.append("  WHERE ");
+			sql.append("time >= current_date() && ");
+			sql.append("  (user_id = ?) ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setInt(1, user_id);
+			
+			pstmt.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	public void requestNightStudy(int user_id)
 	{
 		Connection connection = null;
