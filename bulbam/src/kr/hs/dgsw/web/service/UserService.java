@@ -5,7 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
+import kr.hs.dgsw.web.domain.NightStudyRequest;
 import kr.hs.dgsw.web.domain.User;
 
 public final class UserService
@@ -426,5 +430,123 @@ public final class UserService
 		}
 		
 		return user;
+	}
+	
+	/**
+	 * 주어진 날짜에 심야 자습을 신청한 사람들의 목록을 읽어온다.
+	 * 
+	 * @param date 날짜
+	 * @return 신청자 목록
+	 */
+	public List<NightStudyRequest> listNightStudy(Date date)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<NightStudyRequest> list = new LinkedList<NightStudyRequest>();
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT a.id, a.user_id, a.time, b.user_name, b.class, b.grade, b.number  ");
+			sql.append("  FROM nightstudy AS a ");
+			sql.append("  JOIN user AS b ON a.user_id = b.user_id ");
+			sql.append(" WHERE time = ? ");
+
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setDate(1, new java.sql.Date(date.getTime()));
+
+			
+			NightStudyRequest nightStudyRequest = null;
+			
+			rs = pstmt.executeQuery();
+			while (rs.next())
+			{
+				int id = rs.getInt(1);
+				int userId = rs.getInt(2);
+				Date time = rs.getDate(3);
+				String userName = rs.getString(4);
+				int clazz = rs.getInt(5);
+				int grade = rs.getInt(6);
+				int number = rs.getInt(7);
+				
+				nightStudyRequest = new NightStudyRequest();
+				nightStudyRequest.setId(id);
+				nightStudyRequest.setUserId(userId);
+				nightStudyRequest.setTime(time);
+				nightStudyRequest.setUserName(userName);
+				nightStudyRequest.setClazz(clazz);
+				nightStudyRequest.setGrade(grade);
+				nightStudyRequest.setNumber(number);
+				
+				list.add(nightStudyRequest);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return list;
+	}
+
+	
+	public static void main(String[] args)
+	{
+		try
+		{
+			UserService userService = new UserService();
+			List<NightStudyRequest> list = userService.listNightStudy(new Date());
+			
+			System.out.println(list.size());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			// TODO: handle exception
+		}
 	}
 }
