@@ -1,5 +1,39 @@
+<%@page import="java.text.ParseException"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="kr.hs.dgsw.web.domain.NightStudyRequest"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.hs.dgsw.web.service.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	String sTime = request.getParameter("time");
+	SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+
+
+	Date time = null;
+	if (sTime == null)
+	{
+		time = new Date();
+	}
+	else
+	{
+		try
+		{
+			time = date_format.parse(sTime);
+		}
+		catch (ParseException e)
+		{
+			time = new Date();
+		}
+		
+	}
+
+	UserService service = UserService.getInstance();
+	List<NightStudyRequest> list = service.listNightStudy(time);
+
+%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -28,6 +62,20 @@
     </header>
     <p class="margin_top"></p>
 
+	<span>날짜 : </span><span><%= date_format.format(time) %></span>
+
+	<p>
+<%
+if (list.size() == 0)
+{
+	
+%>
+	<span>신청한 학생이 없습니다.</span>
+<%
+}
+else
+{
+%>
     <table cellspacing="0" cellpadding="0" class="table table-hover text-center">
         <thead>
         <tr class="success">
@@ -37,11 +85,27 @@
         </tr>
         </thead>
         <tbody>
+<%
+	for (NightStudyRequest item : list)
+	{
+%>            
+            <tr>
+                <td><%= item.getUserName() %></td>
+                <td><%= item.getGrade() %>학년 <%= item.getClazz() %>반 <%= item.getNumber() %>번</td>
+                <td><%= item.getTime() %></td>
+            </tr>
+<%
+	}
+%>
+            <!-- 
             <tr>
                 <td>관리자</td>
                 <td>1학년1반16번</td>
                 <td>2016-11-05 11:35:29</td>
             </tr>
+
+
+
             <tr>
                 <td>최영훈</td>
                 <td>1학년1반16번</td>
@@ -82,8 +146,16 @@
                 <td>1학년1반16번</td>
                 <td>2016-11-05 11:11:56</td>
             </tr>     
+			-->
+
         </tbody>
     </table>
+
+
+
+<%
+}
+%>
 
 
 
