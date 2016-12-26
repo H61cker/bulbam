@@ -62,8 +62,21 @@
     </header>
     <p class="margin_top"></p>
 
-	<span>날짜 : </span><span><%= date_format.format(time) %></span>
 
+	
+	<div class="jumbotron">
+        <h1><span style="font-size:50px;">심야 자율 학습 신청자 목록.</span></h1>
+
+        <br><br>
+        <p> 심야 자율 학습 이란 ? </p>
+        <p></p>
+        <p> 학생들이 엄청난 열기로 공부를 밤 늦게까지 하는것을 말합니다! </p>
+        <p> 공부를 잘하고 싶으신가요? </p>
+        <p>지금 당장 신청 하세요!</p>
+    </div>
+    
+    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : </span><span><%= date_format.format(time) %></span> </div>
+	
 	<p>
 <%
 if (list.size() == 0)
@@ -97,56 +110,6 @@ else
 <%
 	}
 %>
-            <!-- 
-            <tr>
-                <td>관리자</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:35:29</td>
-            </tr>
-
-
-
-            <tr>
-                <td>최영훈</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:11:56</td>
-            </tr>
-            <tr>
-                <td>최영훈</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:11:56</td>
-            </tr>
-            <tr>
-                <td>최영훈</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:11:56</td>
-            </tr>
-            <tr>
-                <td>최영훈</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:11:56</td>
-            </tr>
-            <tr>
-                <td>최영훈</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:11:56</td>
-            </tr>
-            <tr>
-                <td>최영훈</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:11:56</td>
-            </tr>
-            <tr>
-                <td>최영훈</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:11:56</td>
-            </tr>
-            <tr>
-                <td>최영훈</td>
-                <td>1학년1반16번</td>
-                <td>2016-11-05 11:11:56</td>
-            </tr>     
-			-->
 
         </tbody>
     </table>
