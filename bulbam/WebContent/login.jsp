@@ -12,9 +12,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>request</title>
   <link href="include/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <style type="text/css">
     .margin_top{
       margin-top: 50px;
+    }
+    .margin_Dtop{
+    	margin-top: 10%;
+    }
+    .margin_DDtop{
+    	margin-top: 15%;
     }
   </style>
 </head>
@@ -24,46 +31,61 @@
       <ul class="nav nav-tabs">
            <li><a href="#">Home</a></li>
            <li><a href="#">Night</a></li>
-           <li class="active"><a href="#">List</a></li>
+           <li><a href="#">List</a></li>
             <a class="navbar-brand navbar-right" href="#">
                 <img alt="brand" src="include/img/dgsw_logo.png">
             </a>
       </ul>
     </header>
     <p class="margin_top"></p>
-
-	<div>
-		<form method="post" action="login.do">
-<%
+	<%
 	if (error != null)
 	{
 %>
-			<div>
-				등록되지 않았거나 비밀번호가 올바르지 않습니다.
-			</div>
+		
+		<p>
+			<script> alert("아이디 또는 비밀번호가 일치하지 않습니다."); </script>
+		</p>
 <%
 	}
 %>
-			<div>
-				<label>아이디</label>
-				<input type="text" name="id">
-			</div>
-		
-			<div>
-				<label>비밀번호</label>
-				<input type="password" name="password">
-			</div>
-		
-			<div>
-				<input type="submit" value="로그인">
-			</div>
-		
-		
-		</form>
+
+	<div class="margin_Dtop"></div>
+
+	<div class="alert alert-warning text-center" role="alert"> 로그인을 하시면 정상적인 서비스를 이용할 수 있습니다.</div>
 	
+	<div class="container-fluid">
+		
+		<form class="form" method="post" action="login.do">
+			
+			<div class="container" style="width:60%;">
+			
+			<div class="form-group">
+			
+				<div class="controls">
+					<input type="text" style="height: 50px;" class="form-control text-center" name="id" placeholder="아이디">
+				</div>
+
+				<div class="controls">
+					<input type="password" style="height: 50px;" class="form-control text-center" name="password" placeholder="비밀번호">
+				</div>
+				<br>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-success btn-lg btn-block"> 전송 </button>
+				</div>
+				<br>
+				<a href="http://localhost/bulbam/sign_up.jsp"><p class="text-right" style="font-size: 15px;">가입하러 가기..</p></a>
+				
+			</div>
+			
+			</div>
+		</form>
+
+
 	</div>
     
-
+	<div class="margin_DDtop"></div>
+	
      <footer class="text-center margin_top">
         <div class="panel panel-default">
           <div class="panel-body text-center">

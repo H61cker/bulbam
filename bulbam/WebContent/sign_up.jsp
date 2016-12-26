@@ -85,27 +85,7 @@
                 {
                 	output += '           <option value="' + i +'">' + i + '</option>';
                 }
-/* 
-                output += '           <option value="1">1</option>';
-                output += '           <option value="1">2</option>';
-                output += '           <option>3</option>';
-                output += '           <option>4</option>';
-                output += '           <option>5</option>';
-                output += '           <option>6</option>';
-                output += '           <option>7</option>';
-                output += '           <option>8</option>';
-                output += '           <option>9</option>';
-                output += '           <option>10</option>';
-                output += '           <option>11</option>';
-                output += '           <option>12</option>';
-                output += '           <option>13</option>';
-                output += '           <option>14</option>';
-                output += '           <option>15</option>';
-                output += '           <option>16</option>';
-                output += '           <option>17</option>';
-                output += '           <option>18</option>';
-                output += '           <option>19</option>';
-                output += '           <option>20</option>'; */
+
                 output += '    </select>';
                 output += '</div>';
             	
