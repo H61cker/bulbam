@@ -33,7 +33,6 @@ public class RequestCancelServlet extends HttpServlet
 		
 		UserService service = UserService.getInstance();
 		service.requestCancel(user.getUserId());
-		
 		response.sendRedirect("list.jsp");
 		
 	}

@@ -33,7 +33,6 @@ public class RequestServlet extends HttpServlet
 		
 		UserService service = UserService.getInstance();
 		service.requestNightStudy(user.getUserId());
-		
 		response.sendRedirect("list.jsp");
 		
 	}
