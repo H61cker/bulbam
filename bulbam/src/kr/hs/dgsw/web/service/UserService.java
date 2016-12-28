@@ -868,7 +868,7 @@ public final class UserService
 			pstmt = connection.prepareStatement(sql.toString());
 			pstmt.setInt(1, uri);
 			
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 		}
 		catch (Exception e)
 		{

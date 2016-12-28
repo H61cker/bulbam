@@ -20,7 +20,7 @@
 	
 	UserService service = UserService.getInstance();
 	service.Delete(uri);
-//	response.sendRedirect("board_list.jsp");
+	response.sendRedirect("board_list.jsp");
 	
 %>
 </body>
