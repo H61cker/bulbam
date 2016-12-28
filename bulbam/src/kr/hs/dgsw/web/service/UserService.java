@@ -1,6 +1,7 @@
 package kr.hs.dgsw.web.service;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +12,8 @@ import java.util.List;
 
 import kr.hs.dgsw.web.domain.NightStudyRequest;
 import kr.hs.dgsw.web.domain.User;
+import kr.hs.dgsw.web.domain.Board;
+import kr.hs.dgsw.web.domain.BoardList;
 
 public final class UserService
 {
@@ -533,6 +536,381 @@ public final class UserService
 		return list;
 	}
 
+	
+	public void Write(String subject, String contents, String writer, String password)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("INSERT INTO board ");
+			sql.append("  (title,content,write_time,password,writer) ");
+			sql.append("VALUES ");
+			sql.append("  (?,?, now(),?,?) ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setString(1, subject);
+			pstmt.setString(2, contents);
+			pstmt.setString(3, password);
+			pstmt.setString(4, writer);
+			
+			pstmt.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public List<BoardList> BoardList()
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<BoardList> list = new LinkedList<BoardList>();
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+    		connection = 
+    			DriverManager.getConnection(
+    			"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+    			"dgsw", "dnrhddltks");
+    		
+    		StringBuilder sql = new StringBuilder();
+    		sql.append("SELECT `id`,`title`,`content`,`write_time`,`writer`");
+    		sql.append("  FROM board ORDER BY id DESC");
+
+
+			
+			BoardList boardList= null;
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+			
+			while (rs.next())
+			{
+				int id = rs.getInt(1);
+				String title = rs.getString(2);
+				String content = rs.getString(3);
+				Date write_time = rs.getDate(4);
+				String writer = rs.getString(5);
+				
+				boardList = new BoardList();
+				boardList.setId(id);
+				boardList.setTitle(title);
+				boardList.setContent(content);
+				boardList.setDate(write_time);
+				boardList.setWriter(writer);
+				
+				list.add(boardList);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return list;
+	}
+	
+	public Board getBoard(int uri)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		Board board = null;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT * FROM board ");
+			sql.append(" WHERE id = ? ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setInt(1, uri);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next())
+			{
+				board = new Board();
+				
+				board.setBoardId(rs.getInt("id"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setWriteTime(rs.getDate("write_time"));
+				board.setPassword(rs.getString("password"));
+				board.setWriter(rs.getString("writer"));
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return board;
+	}
+	
+	public void Modify(int uri , String title, String content)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE board ");
+			sql.append("  SET title=(?),content=(?) ");
+			sql.append("WHERE id=(?)");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, uri);
+			
+			pstmt.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public void Delete(int uri)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("DELETE FROM `board` ");
+			sql.append("WHERE id = (?) ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setInt(1, uri);
+			
+			pstmt.executeQuery();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 	
 	public static void main(String[] args)
 	{
