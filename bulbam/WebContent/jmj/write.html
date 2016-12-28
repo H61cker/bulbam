@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+  
+<head>
+<style>
+
+
+
+div.container {
+    width: 100%;
+    border: 2px solid ;
+}
+
+header,footer {
+  padding: 4em;
+    color: black;
+    background-color: lightblue;
+    clear: left;
+    text-align: center;
+
+
+} 
+
+
+footer, body {
+    padding: 1em;
+    color: black;
+    background-color: white;
+    clear: left;
+    text-align: center;
+    font-family: 문체부 쓰기 정체 ; 
+    
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+ 
+<header><h1> 글 작성 </h1></header> 
+
+
+
+  <br>
+  
+  <br>
+ 
+
+<title> 자유 게시판 </title>
+
+</head>
+<body>
+<h1> 게시판 글 작성 </h1>
+
+<form action="/bulbam/writend.jsp" method="post" name="fwrite">
+
+<tr>이름 <input type="text" name="user"></tr>
+
+<br>
+<br>
+
+<tr>제목 <input type="text" name="sub"></tr>
+
+<br>
+<br>
+
+<tr>내용 <textarea name="content" rows="60" cols="80"></textarea></tr>
+
+<br>
+<br>
+
+<tr>비밀번호 <input type="text" name="pass"></tr>
+
+<br>
+<br>
+
+<tr><input type="submit" value="글쓰기">
+
+
+
+</form>
+
+</body>
+<br>
+<br>
+<br>
+
+
+</div>
+
+</body>
+</html>
+
