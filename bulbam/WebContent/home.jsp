@@ -56,7 +56,6 @@
            <li><a href="./list_private.jsp">개인별 신청이력</a></li>
            <li><a href="./board_list.jsp">자유 게시판</a></li>
            <li><a href="./members.jsp">회원관리</a></li>
-           <li style="margin-top:10px; margin-left:250px"><%= user.getUserName() %> 님 환영합니다!</li>
         </ul>
     </header>  
     <p class="margin_top"></p>
