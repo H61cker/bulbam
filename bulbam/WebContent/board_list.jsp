@@ -119,13 +119,14 @@ System.out.println(lastPage);
 	
 	</table>
 	
-	<div>
+	<div style="text-align: center;">
 	<%
-	
+		if (firstPage != 1)
+		{
 	%>
 		<span><a href="board_list.jsp?page<%= firstPage-1 %>">[이전]</a></span>
 	<%
-	
+		}
 	%>
 
 <%
