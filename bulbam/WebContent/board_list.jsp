@@ -80,6 +80,8 @@ List<BoardList> list = service.BoardList(currentPage);
     <jsp:include page="navbar_Include.jsp"></jsp:include> <!-- 위에 navbar를 navbar_Include.jsp에 함수화 시킨 후 jsp:include 문으로 가져 와서 도입/변경을 쉽게 하였다.  -->
     
      <img src="include/img/schoolboard.png" style="margin-top:30px;margin-bottom:30px;width:1140px; height:300px">
+     
+     <p><a class="btn btn-md btn-success" href="/bulbam/write.jsp" role="button" style="float:right">글쓰기</a></p>
 
 	<table class="table table-striped">
 	  <thead>
@@ -186,9 +188,6 @@ List<BoardList> list = service.BoardList(currentPage);
 	</div>
 </div>
 
-<div class="container">
-   <p><a class="btn btn-md btn-success" href="/bulbam/write.jsp" role="button" style="float:right">글쓰기</a></p>
-</div>
 
 </body>
 <!-- body 끝 -->
