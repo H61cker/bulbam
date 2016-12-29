@@ -33,13 +33,18 @@
 <body>
   <div class="container">
     <header>
-      <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs">
+     	 <div style="margin-bottom:10px">
+      		<a class="navbar-brand navbar-left" href="#">
+                <img alt="brand" src="include/img/dgsw_logo.png" style="margin-bottom:30px">
+            </a>
+         </div>
            <li><a href="./home.jsp">홈</a></li>
            <li class="active"><a href="./request.jsp">심야자습 신청</a></li>
            <li><a href="./list.jsp">신청목록</a></li>
            <li><a href="./list_private.jsp">개인별 신청이력</a></li>
            <li><a href="./board_list.jsp">자유 게시판</a></li>
-            </a>
+           <li><a href="./members.jsp">회원관리</a></li>
       </ul>
     </header>
 
