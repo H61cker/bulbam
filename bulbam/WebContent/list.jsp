@@ -42,11 +42,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>request</title>
   <link href="include/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+  
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
   <style type="text/css">
     .margin_top{
       margin-top: 50px;
     }
   </style>
+  
+  <script>
+  (function($){
+	  $( function() {
+		    $( "#Datepicker" ).datepicker();
+		  } ); 
+  })(jQuery);
+  </script>
+  
+  
 </head>
 <body>
   <div class="container">
@@ -68,7 +84,7 @@
 	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
 	</div>
     
-    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : </span><span><%= date_format.format(time) %></span> </div>
+    <div class="alert alert-info" style="text-align: right" role="alert"> <p>날짜: <input type="text" id="datepicker"></p> </div>
 	
 	<p>
 <%
@@ -132,5 +148,6 @@ else
 <script>
     $('.carousel').carousel()
 </script>
+
 
 </html>
