@@ -73,6 +73,9 @@
 	</table>
 </div>
 
+<form action="/bulbam/write.jsp" style="margin-left:1475px">
+	<button type="submit" class="btn btn-success btn-sm btn-block" style="width:55px;height:30px">글쓰기</button>
+</form>
 </body>
 <!-- body 끝 -->
 
