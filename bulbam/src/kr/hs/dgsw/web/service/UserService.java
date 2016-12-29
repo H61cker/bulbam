@@ -720,7 +720,7 @@ public final class UserService
     			"dgsw", "dnrhddltks");
     		
     		StringBuilder sql = new StringBuilder();
-    		sql.append("SELECT `id`,`title`,`content`,`write_time`,`writer`");
+    		sql.append("SELECT `id`,`title`,`content`,`write_time`,`writer`, hit ");
     		sql.append("  FROM board ORDER BY id DESC");
 
 			BoardList boardList= null;
@@ -735,6 +735,7 @@ public final class UserService
 				String content = rs.getString(3);
 				Date write_time = rs.getDate(4);
 				String writer = rs.getString(5);
+				int view = rs.getInt(6);
 				
 				boardList = new BoardList();
 				boardList.setId(id);
@@ -742,6 +743,7 @@ public final class UserService
 				boardList.setContent(content);
 				boardList.setDate(write_time);
 				boardList.setWriter(writer);
+				boardList.setViews(view);
 				
 				list.add(boardList);
 			}
@@ -807,7 +809,7 @@ public final class UserService
     			"dgsw", "dnrhddltks");
     		
     		StringBuilder sql = new StringBuilder();
-    		sql.append(" SELECT `id`,`title`,`content`,`write_time`,`writer` ");
+    		sql.append("SELECT `id`,`title`,`content`,`write_time`,`writer`, hit ");
     		sql.append(" FROM board ORDER BY id DESC ");
     		sql.append(" limit ?, 10 ");
 
@@ -825,6 +827,7 @@ public final class UserService
 				String content = rs.getString(3);
 				Date write_time = rs.getDate(4);
 				String writer = rs.getString(5);
+				int view = rs.getInt(6);
 				
 				boardList = new BoardList();
 				boardList.setId(id);
@@ -832,7 +835,8 @@ public final class UserService
 				boardList.setContent(content);
 				boardList.setDate(write_time);
 				boardList.setWriter(writer);
-				
+				boardList.setViews(view);
+
 				list.add(boardList);
 			}
 		}
@@ -1249,6 +1253,73 @@ public final class UserService
 			}
 		}
 		return count;
+	}
+	
+	public void increaseViews(int id)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE board ");
+			sql.append("  SET hit= hit + 1 ");
+			sql.append("WHERE id=?");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setInt(1, id);
+			
+			pstmt.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	public static void main(String[] args)

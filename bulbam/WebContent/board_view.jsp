@@ -21,7 +21,7 @@
 	Board board = service.getBoard(uri);
 	
 	
-	System.out.println(board.getPassword());
+	service.increaseViews(uri);
 	
 %>
 
