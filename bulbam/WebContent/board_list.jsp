@@ -33,7 +33,7 @@ if(countOfPages<lastPage){
 	lastPage = countOfPages;
 }
 
-List<BoardList> list = service.BoardList();
+List<BoardList> list = service.BoardList(currentPage);
 
 System.out.println(firstPage);
 System.out.println(lastPage);
@@ -121,7 +121,7 @@ System.out.println(lastPage);
 	<%
 	
 	%>
-		<span>[이전]</span>
+		<span><a href="board_list.jsp?page<%= firstPage-1 %>">[이전]</a></span>
 	<%
 	
 	%>
@@ -130,11 +130,40 @@ System.out.println(lastPage);
 	for (int i = firstPage ; i <= lastPage ; i++)
 	{
 %>
+<<<<<<< HEAD
 		<span><%= i %></span>
 <% 
 	}
 %>
 		<span>[다음]</span>
+=======
+	<%
+		if(currentPage == i){
+			
+	%>
+			<span style="font-weight:bold"><a href="board_list.jsp?page=<%= i %>"><%= i %></a></span>
+	<%
+		}
+		else{
+	%>		
+			<span><a href="board_list.jsp?page=<%= i %>"><%= i %></a></span>
+	<%
+		}
+	%>
+	
+<% 
+	}
+%>
+
+
+<%
+ if(countOfPages>lastPage){
+%>
+		<span><a href="board_list.jsp?page<%=lastPage+1 %>">[다음]</a></span>
+<%
+ }
+%>
+>>>>>>> 6297200329a5ef2a3337d9d0af22d704ed133cb7
 	</div>
 </div>
 
