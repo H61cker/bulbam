@@ -1,3 +1,4 @@
+<%@page import="kr.hs.dgsw.web.domain.BoardList"%>
 <%@page import="kr.hs.dgsw.web.domain.Board"%>
 <%@page import="kr.hs.dgsw.web.domain.User"%>
 <%@page import="kr.hs.dgsw.web.service.UserService"%>
@@ -18,10 +19,11 @@
 	int uri = Integer.parseInt(request.getParameter("id"));
 	
 	UserService service = UserService.getInstance();
-	Board board = service.getBoard(uri);
+	
 	
 	
 	service.increaseViews(uri);
+	Board board = service.getBoard(uri);
 	
 %>
 
@@ -91,6 +93,7 @@
 	                    <tr>
 	                        <th scope="col">이름 : <%= board.getWriter() %></th>
 	                        <th scope="col">등록일 : <%= board.getWriteTime() %></th>
+	                        <th scope="col">조회수 : <%= board.getView() %></th>
 	                    </tr>
 	                </thead>
 	            </table>

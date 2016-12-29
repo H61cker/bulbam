@@ -11,6 +11,7 @@ public class Board {
 	private String user_id;
 	private String password;
 	private String writer;
+	private int view;
 	
 //	id
 	public int getBoardId()
@@ -83,5 +84,13 @@ public class Board {
 	public void setWriter(String writer)
 	{
 		this.writer = writer;
+	}
+
+	public int getView() {
+		return view;
+	}
+
+	public void setView(int view) {
+		this.view = view;
 	}
 }
