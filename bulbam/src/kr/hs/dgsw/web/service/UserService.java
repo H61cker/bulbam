@@ -723,8 +723,6 @@ public final class UserService
     		sql.append("SELECT `id`,`title`,`content`,`write_time`,`writer`");
     		sql.append("  FROM board ORDER BY id DESC");
 
-
-			
 			BoardList boardList= null;
 			
 			pstmt = connection.prepareStatement(sql.toString());
@@ -1005,6 +1003,74 @@ public final class UserService
 				}
 			}
 		}
+	}
+	
+	public int getCountOfArticles()
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT count(*) FROM board ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		return count;
 	}
 	
 	public static void main(String[] args)

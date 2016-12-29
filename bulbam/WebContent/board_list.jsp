@@ -5,6 +5,40 @@
 <%@page import="kr.hs.dgsw.web.service.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%
+String sCurrentPage = request.getParameter("page");
+int currentPage = 0;
+
+try
+{
+	currentPage = Integer.parseInt(sCurrentPage);
+}
+catch (NumberFormatException e) 
+{
+	currentPage = 1;
+}
+if (currentPage <= 0)
+{
+	currentPage = 1;
+}
+
+UserService service = UserService.getInstance();
+
+int countOfArticles = service.getCountOfArticles(); //총 게시물 개수
+int countOfPages = ((countOfArticles-1)/10)+1; //총 페이지 개수
+int firstPage = (currentPage/10)*10+1;
+int lastPage = (currentPage/10)*10+10;
+
+if(countOfPages<lastPage){
+	lastPage = countOfPages;
+}
+
+List<BoardList> list = service.BoardList();
+
+System.out.println(firstPage);
+System.out.println(lastPage);
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -20,13 +54,11 @@
     <link rel='stylesheet' href="include/css/bootstrap.css" />
 </head>
 
-<%
-	UserService service = UserService.getInstance();
-	List<BoardList> list = service.BoardList();
-%>
 
 <!-- body 시작 -->
 <body>
+
+
 
 <div class="container">
 
@@ -81,6 +113,26 @@
 	   </tbody>
 	
 	</table>
+	
+	<div>
+	<%
+	
+	%>
+		<span>[이전]</span>
+	<%
+	
+	%>
+
+<%
+	for (int i = firstPage ; i <= lastPage ; i++)
+	{
+%>
+		<span><%= i %></span>
+<% 
+	}
+%>
+		<span>[다음]</span>
+	</div>
 </div>
 
 </body>
