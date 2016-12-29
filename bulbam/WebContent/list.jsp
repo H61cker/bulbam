@@ -78,11 +78,11 @@
       </ul>
     </header>
     <p class="margin_top" style="margin-bottom:50px"></p>
-    <div style="margin-bottom:40px; margin-left:90px">
+    <div style="margin-bottom:40px; margin-left:90px" class="container">
 	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
 	</div>
     
-    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : <!-- </span><span><%= date_format.format(time) %> --><input type="text" id="txt_date"></span> </div>
+    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : </span><span><%= date_format.format(time) %></span> </div>
 	
 	<p>
 <%

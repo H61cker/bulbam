@@ -57,6 +57,7 @@
 		if(checked){
 		
 	%>
+	<div class="container">
 	
 	<p class="margin_top"></p>
     <img src="include/img/cancel.png" width="1140px">
@@ -68,11 +69,13 @@
     	</button>
     	
     </form>
+    </div>
     <%
 	}
 	// 신청 안했다면.
 	else{
     %>
+    <div class="container">
     
     <p class="margin_top"></p>
   	<img src="include/img/r.png" width="1140px"></div>
@@ -84,6 +87,7 @@
       	</button>
 
     </form>
+    </div>
     <%
 	}
     %>
