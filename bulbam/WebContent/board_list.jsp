@@ -33,7 +33,7 @@ if(countOfPages<lastPage){
 	lastPage = countOfPages;
 }
 
-List<BoardList> list = service.BoardList(countOfPages);
+List<BoardList> list = service.BoardList(currentPage);
 
 System.out.println(firstPage);
 System.out.println(lastPage);
