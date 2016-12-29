@@ -22,7 +22,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>request</title>
+  <title>대소고 심자신청</title>
   <link href="include/css/bootstrap.min.css" rel="stylesheet">
   <style type="text/css">
     .margin_top{
@@ -42,15 +42,6 @@
             </a>
       </ul>
     </header>
-    <p class="margin_top"></p>
-    <div class="container"> 
-     <div class="jumbotron">
-      <div class="container text-center">
-        <h1 style="color:#b82601">심자 할 사람~!</h1><br>
-        <p>여러분 공부 열심히하세여!</p>
-      </div>
-    </div>
-    <div class="center">
 
     <%
 	    Boolean checked=true;
@@ -61,13 +52,14 @@
 		if(checked){
 		
 	%>
+	
+	<p class="margin_top"></p>
+    <img src="include/img/cancel.png" width="1140px" class="img-rounded">
     
     <form class="margin_top" action="request_cancel.do" method="post">
     	
-    	<button type="submit" class="btn bt-success btn-lg btn-block">
-    		<span class="glyphicon glyphicon-hand-down" style="font-size:25px"></span>
-    			심야 자율 학습 취소
-    		<span class="Glyphicon glyphicon-hand-down" style="font-size:25px"></span>
+    	<button type="submit" class="btn btn-danger btn-lg btn-block"style="line-height:1.0em;font-size:23px;width:1140px;height:45px;position:absolute;top:440px;right:500px;"> 
+    	▶심야 자율 학습 취소◀
     	</button>
     	
     </form>
@@ -77,30 +69,37 @@
 	else{
     %>
     
+    <p class="margin_top"></p>
+  	
+  	<div style="position:absolute;top:103px;right:305px;"><img src="include/img/r.png" width="1140px"></div>
+
     <form class="margin_top" action="request.do" method="post">
     
-      <button type="submit" class="btn btn-success btn-lg btn-block"> 
-        <span class="glyphicon glyphicon-hand-down" style="font-size:25px"></span>
-          심야 자율 학습 신청!
-        <span class="glyphicon glyphicon-hand-down" style="font-size:25px"></span>
-      </button>
+  		<button type="submit" class="btn btn-success btn-lg btn-block"style="line-height:1.0em;font-size:23px;width:1140px;height:45px;position:absolute;top:440px;right:305px;"> 
+		▶심야 자율 학습 신청◀
+      	</button>
 
     </form>
     <%
 	}
     %>
 
-     </div>
-     <footer class="text-center margin_top">
+     <footer class="text-center margin_top" style="position:absolute;top:550px;left:670px">
         <div class="panel panel-default">
           <div class="panel-body text-center">
               All Copyright Reserved 2016- DGSW Web Server<br>
               DGSW 2016-2016 DGSW WEB SERVER PROJECT TEAM
           </div>
         </div>
-
      </footer>
   </div>
+  
+ <!--    <footer class="text-center margin_top">
+        <div class="panel panel-default" style="position:absolute;top:600px;left:680px">
+              All Copyright Reserved 2016- DGSW Web Server<br>
+              DGSW 2016-2016 DGSW WEB SERVER PROJECT TEAM
+        </div>
+     </footer>-->
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

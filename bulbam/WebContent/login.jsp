@@ -29,9 +29,8 @@
   <div class="container">
     <header>
       <ul class="nav nav-tabs">
-           <li><a href="#">Home</a></li>
-           <li><a href="#">Night</a></li>
-           <li><a href="#">List</a></li>
+           <li><a href="./login.jsp">로그인</a></li>
+           <li><a href="./sign_up.jsp">회원 가입</a></li>
             <a class="navbar-brand navbar-right" href="#">
                 <img alt="brand" src="include/img/dgsw_logo.png">
             </a>
@@ -52,7 +51,7 @@
 
 	<div class="margin_Dtop"></div>
 
-	<div class="alert alert-warning text-center" role="alert"> 로그인을 하시면 정상적인 서비스를 이용할 수 있습니다.</div>
+	<div class="alert alert-warning text-center" role="alert"> 모든 서비스는 로그인 후 이용하실 수 있습니다. </div>
 	
 	<div class="container-fluid">
 		

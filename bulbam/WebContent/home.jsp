@@ -43,16 +43,19 @@
 	<form id="logoutForm" method="post" action="logout.do">
 	</form>
   <div class="container">
-    <header>
+    <<header>
       <ul class="nav nav-tabs">
-           <li class="active"><a href="">Home</a></li>
-           <li><a href="./request.jsp">Night</a></li>
-           <li><a href="./list.jsp">List</a></li>
-            <a class="navbar-brand navbar-right" href="#">
-                <img alt="brand" src="include/img/dgsw_logo.png">
+     	 <div style="margin-bottom:10px">
+      		<a class="navbar-brand navbar-left" href="#">
+                <img alt="brand" src="include/img/dgsw_logo.png" style="margin-bottom:30px">
             </a>
-      </ul>
-    </header>
+         </div>
+           <li class="active"><a href="./home.jsp">홈</a></li>
+           <li><a href="./request.jsp">심야자습 신청</a></li>
+           <li><a href="./list.jsp">신청목록</a></li>
+           <li><a href="./board_list.jsp">자유 게시판</a></li>
+           <li style="margin-top:10px; margin-left:330px"><%= user.getUserName() %> 님 환영합니다!</li>
+    </header>  
     <p class="margin_top"></p>
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -127,7 +130,7 @@
 	                <h3 class="panel-title">
 	                    USER INFORMATION
 	                </h3>
-	            </div>
+	            </div>   
 	            <div class="panel-body">
 	                    <p class="glyphicon glyphicon-user"> name-> <%= user.getUserName() %>님 </p><br>
 	                    <p class="glyphicon glyphicon-fire"> class-> <%= user.getGrade() %>학년<%= user.getClazz() %>반<%= user.getNumber() %>번 </p> <br>

@@ -27,7 +27,21 @@
 
 <!-- body 시작 -->
 <body>
+
 <div class="container">
+
+	<header>
+      <ul class="nav nav-tabs">
+           <li><a href="./home.jsp">홈</a></li>
+           <li><a href="./request.jsp">심야자습 신청</a></li>
+           <li><a href="./list.jsp">신청목록</a></li>
+           <li class="active"><a href="./board_list.jsp">자유 게시판</li>
+            <a class="navbar-brand navbar-right" href="./home.jsp">
+                <img alt="brand" src="include/img/dgsw_logo.png">
+            </a>
+      </ul>
+    </header>
+
 	<table class="table table-striped">
 	  <thead>
 		   <tr>

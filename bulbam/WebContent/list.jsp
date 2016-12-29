@@ -52,28 +52,19 @@
   <div class="container">
     <header>
       <ul class="nav nav-tabs">
-           <li><a href="./home.jsp">Home</a></li>
-           <li><a href="./request.jsp">Night</a></li>
-           <li class="active"><a href="./list.jsp">List</a></li>
-            <a class="navbar-brand navbar-right" href="#">
+           <li><a href="./home.jsp">홈</a></li>
+           <li><a href="./request.jsp">심야자습 신청</a></li>
+           <li class="active"><a href="./list.jsp">신청목록</a></li>
+           <li><a href="./board_list.jsp">자유 게시판</li>
+            <a class="navbar-brand navbar-right" href="./home.jsp">
                 <img alt="brand" src="include/img/dgsw_logo.png">
             </a>
       </ul>
     </header>
-    <p class="margin_top"></p>
-
-
-	
-	<div class="jumbotron">
-        <h1><span style="font-size:50px;">심야 자율 학습 신청자 목록.</span></h1>
-
-        <br><br>
-        <p> 심야 자율 학습 이란 ? </p>
-        <p></p>
-        <p> 학생들이 엄청난 열기로 공부를 밤 늦게까지 하는것을 말합니다! </p>
-        <p> 공부를 잘하고 싶으신가요? </p>
-        <p>지금 당장 신청 하세요!</p>
-    </div>
+    <p class="margin_top" style="margin-bottom:50px"></p>
+    <div style="margin-bottom:40px; margin-left:90px">
+	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
+	</div>
     
     <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : </span><span><%= date_format.format(time) %></span> </div>
 	
