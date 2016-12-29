@@ -919,6 +919,7 @@ public final class UserService
 				board.setWriteTime(rs.getDate("write_time"));
 				board.setPassword(rs.getString("password"));
 				board.setWriter(rs.getString("writer"));
+				board.setView(rs.getInt("hit"));
 			}
 		}
 		catch (Exception e)
