@@ -129,15 +129,6 @@ System.out.println(lastPage);
 <%
 	for (int i = firstPage ; i <= lastPage ; i++)
 	{
-%>
-<<<<<<< HEAD
-		<span><%= i %></span>
-<% 
-	}
-%>
-		<span>[다음]</span>
-=======
-	<%
 		if(currentPage == i){
 			
 	%>
@@ -163,7 +154,6 @@ System.out.println(lastPage);
 <%
  }
 %>
->>>>>>> 6297200329a5ef2a3337d9d0af22d704ed133cb7
 	</div>
 </div>
 
