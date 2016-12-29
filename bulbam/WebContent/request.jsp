@@ -64,7 +64,7 @@
     
     <form class="margin_top" action="request_cancel.do" method="post">
     	
-    	<button type="submit" class="btn btn-danger btn-lg btn-block" style="font-size:23px;width:1140px;height:45px;"> 
+    	<button type="submit" class="btn btn-danger btn-lg btn-block" style="line-height:1.0em;font-size:23px;width:1140px;height:45px;position:absolute;top:440px;"> 
     	▶심야 자율 학습 취소◀
     	</button>
     	
@@ -78,14 +78,14 @@
     <div class="container">
     
     <p class="margin_top"></p>
-  	<img src="include/img/r.png" width="1140px"></div>
-
-    <form class="margin_top" action="request.do" method="post">
+    <img src="include/img/r.png" width="1140px" class="img-rounded">
     
-  		<button type="submit" class="btn btn-success btn-lg btn-block" style="font-size:23px;width:1140px;height:45px;"> 
-		▶심야 자율 학습 신청◀
-      	</button>
-
+    <form class="margin_top" action="request.do" method="post">
+    	
+    	<button type="submit" class="btn btn-success btn-lg btn-block" style="line-height:1.0em;font-size:23px;width:1140px;height:45px;position:absolute;top:440px;"> 
+    	▶심야 자율 학습 신청◀
+    	</button>
+    	
     </form>
     </div>
     <%
