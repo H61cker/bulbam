@@ -40,7 +40,7 @@ int userId = user.getUserId();
 </head>
 <body>
   <div class="container">
-    <header>
+    <!-- <header>
     <ul class="nav nav-tabs">
      	 <div style="margin-bottom:10px">
       		<a class="navbar-brand navbar-left" href="#">
@@ -52,16 +52,17 @@ int userId = user.getUserId();
            <li><a href="./list.jsp">신청목록</a></li>
            <li class="active"><a href="list_private.jsp">개인별 신청이력</a></li>
            <li><a href="./board_list.jsp">자유 게시판</a></li>
-           <li><a href="./members.jsp">회원관리</a></li>
+           <li><a href="./members.jsp">회원 목록</a></li>
         </ul>
-    </header>
+    </header> -->
+    <jsp:include page="navbar_Include.jsp"></jsp:include>
+    
+    <div class="container">
     <p class="margin_top" style="margin-bottom:50px"></p>
-    <div class="alert alert-info" style="text-align: right" role="alert"> 
-    <span>
-      	<td><%= user.getUserName() %></td>
-        <td><%= user.getGrade() %>학년 <%= user.getClazz() %>반 <%= user.getNumber() %>번</td>
-            
-	</span> </div>
+    <span style="text-align:left">
+    	<p style="font-size:170%"><strong><%= user.getUserName() %></strong> 님의 심자 신청 기록입니다</p>
+    </span> 
+	</div>
 	
 	<p>
 <%

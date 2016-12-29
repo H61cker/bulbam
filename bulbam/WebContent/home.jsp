@@ -43,7 +43,7 @@
 	<form id="logoutForm" method="post" action="logout.do">
 	</form>
   <div class="container">
-    <header>
+    <!--<header>
       <ul class="nav nav-tabs">
      	 <div style="margin-bottom:10px">
       		<a class="navbar-brand navbar-left" href="#">
@@ -55,9 +55,12 @@
            <li><a href="./list.jsp">신청목록</a></li>
            <li><a href="./list_private.jsp">개인별 신청이력</a></li>
            <li><a href="./board_list.jsp">자유 게시판</a></li>
-           <li><a href="./members.jsp">회원관리</a></li>
+           <li><a href="./members.jsp">회원 목록</a></li>
         </ul>
-    </header>  
+    </header>-->
+    
+    <jsp:include page="navbar_Include.jsp"></jsp:include> 
+      
     <p class="margin_top"></p>
 
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

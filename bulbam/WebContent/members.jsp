@@ -32,7 +32,7 @@
 </head>
 <body>
   <div class="container">
-    <header>
+    <!--  <header>
     <ul class="nav nav-tabs">
      	 <div style="margin-bottom:10px">
       		<a class="navbar-brand navbar-left" href="#">
@@ -46,13 +46,11 @@
            <li><a href="./board_list.jsp">자유 게시판</a></li>
            <li class="active"><a href="./members.jsp">회원관리</a></li>
         </ul>
-    </header>
+    </header> -->
+    
+    <jsp:include page="navbar_Include.jsp"></jsp:include>
+    
     <p class="margin_top" style="margin-bottom:50px"></p>
-    <div style="margin-bottom:40px; margin-left:90px">
-	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
-	</div>
-
-	
 	<p>
 <%
 if (list.size() == 0)

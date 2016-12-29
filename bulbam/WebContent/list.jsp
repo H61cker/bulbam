@@ -68,7 +68,7 @@
 </head>
 <body>
   <div class="container">
-    <header>
+    <!-- <header>
     <ul class="nav nav-tabs">
      	 <div style="margin-bottom:10px">
       		<a class="navbar-brand navbar-left" href="#">
@@ -82,10 +82,15 @@
            <li><a href="./board_list.jsp">자유 게시판</a></li>
            <li><a href="./members.jsp">회원관리</a></li>
       </ul>
-    </header>
+    </header> -->
+    
+    <jsp:include page="navbar_Include.jsp"></jsp:include>
+    
+    <div class="container" style="width:1200px">
+    
     <p class="margin_top" style="margin-bottom:50px"></p>
-    <div style="margin-bottom:40px; margin-left:90px" class="container">
-	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
+    <div style="margin-bottom:40px; margin-left:90px">
+	<img src="include/img/retryrqlist.png" class="img-rounded" width="1200px" height="400px" style="position:relative; left:-100px">
 	</div>
     
     <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : <!-- </span><span><%= date_format.format(time) %> --><input type="text" id="txt_date" size="12"><input type="button" value="보기" onclick="setDate();"></span> </div>
@@ -133,6 +138,7 @@ else
 }
 %>
 
+</div>
 
 
      <footer class="text-center margin_top">

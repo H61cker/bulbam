@@ -59,11 +59,10 @@ List<BoardList> list = service.BoardList(currentPage);
 
 
 <div class="container">
-
-	<header>
+	<!-- <header>
 	<ul class="nav nav-tabs">
      	 <div style="margin-bottom:10px">
-      		<a class="navbar-brand navbar-left" href="#">
+      		<a class="navbar-brand navbar-left" href="#"> 
                 <img alt="brand" src="include/img/dgsw_logo.png" style="margin-bottom:30px">
             </a>
          </div>
@@ -72,9 +71,12 @@ List<BoardList> list = service.BoardList(currentPage);
            <li><a href="./list.jsp">신청목록</a></li>
            <li><a href="./list_private.jsp">개인별 신청이력</a></li>
            <li class="active"><a href="./board_list.jsp">자유 게시판</a></li>
-           <li><a href="./members.jsp">회원관리</a></li>
+           <li><a href="./members.jsp">회원 목록</a></li>
       </ul>
     </header>
+    -->
+    
+    <jsp:include page="navbar_Include.jsp"></jsp:include> <!-- 위에 navbar를 navbar_Include.jsp에 함수화 시킨 후 jsp:include 문으로 가져 와서 도입/변경을 쉽게 하였다.  -->
     
     <div class="jumbotron" style="margin-top:30px">
         <h2>자유 익명 게시판</h2>

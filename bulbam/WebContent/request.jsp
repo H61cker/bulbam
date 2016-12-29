@@ -32,7 +32,7 @@
 </head>
 <body>
   <div class="container">
-    <header>
+    <!--<header>
     <ul class="nav nav-tabs">
      	 <div style="margin-bottom:10px">
       		<a class="navbar-brand navbar-left" href="#">
@@ -46,7 +46,9 @@
            <li><a href="./board_list.jsp">자유 게시판</a></li>
            <li><a href="./members.jsp">회원관리</a></li>
       </ul>
-    </header>
+    </header>-->
+
+	<jsp:include page="navbar_Include.jsp"></jsp:include>
 
     <%
 	    Boolean checked=true;
