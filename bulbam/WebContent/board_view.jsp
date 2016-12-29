@@ -66,7 +66,7 @@
     		
     		if(password == "<%= board.getPassword()%>")
     		{
-    			location.href="modify.jsp?id=" +id;
+    			location.href="modify.jsp?id="+id;
     		}
     		else
     		{

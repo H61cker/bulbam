@@ -1095,11 +1095,98 @@ public final class UserService
 		}
 	}
 	
+	public List<User> listUsers()
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<User> list = new LinkedList<User>();
+
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			
+			sql.append("SELECT * ");
+			sql.append(" FROM user ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+		
+			User user = null;
+			
+			rs = pstmt.executeQuery();
+			while (rs.next())
+			{
+				
+				user = new User();
+				
+				user.setUserId(rs.getInt("user_id"));
+				user.setUserName(rs.getString("user_name"));
+				user.setClazz(rs.getInt("class"));
+				user.setNumber(rs.getInt("number"));
+				user.setLoginId(rs.getString("login_id"));
+				user.setGrade(rs.getInt("grade"));
+				user.setType(rs.getString("type"));
+				
+				list.add(user);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		return list;
+
+	}
+	
 	public int getCountOfArticles()
 	{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		int count = 0;
 		try
 		{
@@ -1110,6 +1197,7 @@ public final class UserService
 				"dgsw", "dnrhddltks");
 			
 			StringBuilder sql = new StringBuilder();
+
 			sql.append("SELECT count(*) FROM board ");
 			
 			pstmt = connection.prepareStatement(sql.toString());

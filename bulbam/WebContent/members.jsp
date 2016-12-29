@@ -9,19 +9,11 @@
     pageEncoding="UTF-8"%>
     
 <%
-User user = (User)session.getAttribute("user"); 
-if (user == null)
-{
-	response.sendRedirect("login.jsp");
-	return;
-}
-
-int userId = user.getUserId();
-
-
 
 	UserService service = UserService.getInstance();
-	List<NightStudyRequest> list = service.NightStudyPerson(userId);
+	List<User> list = service.listUsers();
+	
+	System.out.println(list.size());
 
 %>
 <!DOCTYPE html>
@@ -44,9 +36,10 @@ int userId = user.getUserId();
       <ul class="nav nav-tabs">
            <li><a href="./home.jsp">홈</a></li>
            <li><a href="./request.jsp">심야자습 신청</a></li>
-           <li><a href="./list.jsp">신청목록</a></li>
-           <li class="active"><a href="list_private.jsp">개인별 신청이력</a></li>
+           <li class="active"><a href="./list.jsp">신청목록</a></li>
+           <li><a href="./list_private.jsp">개인별 신청이력</a></li>
            <li><a href="./board_list.jsp">자유 게시판</li>
+
             <a class="navbar-brand navbar-right" href="./home.jsp">
                 <img alt="brand" src="include/img/dgsw_logo.png">
             </a>
@@ -56,13 +49,7 @@ int userId = user.getUserId();
     <div style="margin-bottom:40px; margin-left:90px">
 	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
 	</div>
-    
-    <div class="alert alert-info" style="text-align: right" role="alert"> 
-    <span>
-      	<td><%= user.getUserName() %></td>
-        <td><%= user.getGrade() %>학년 <%= user.getClazz() %>반 <%= user.getNumber() %>번</td>
-            
-	</span> </div>
+
 	
 	<p>
 <%
@@ -80,19 +67,44 @@ else
         <thead>
         <tr class="success">
             <th scope="col" class="text-center">이름</th>
+            <th scope="col" class="text-center">ID</th>
             <th scope="col" class="text-center">학년::반::번호</th>
-            <th scope="col" class="text-center">날짜</th>
+            <th scope="col" class="text-center">구분</th>
         </tr>
         </thead>
         <tbody>
-<%
-	for (NightStudyRequest item : list)
+ <%
+	for (User item : list)
 	{
 %>            
             <tr>
                 <td><%= item.getUserName() %></td>
-                <td><%= item.getGrade() %>학년 <%= item.getClazz() %>반 <%= item.getNumber() %>번</td>
-                <td><%= item.getTime() %></td>
+                <td><%= item.getLoginId() %></td>
+<%
+				if(item.getType().equals("S")){
+%>
+					<td><%= item.getGrade() %>학년 <%= item.getClazz() %>반 <%= item.getNumber() %>번</td>
+<%
+                }
+				else
+				{
+%>
+					<td> </td>
+<%
+				}
+				if(item.getType().equals("S")){
+%>
+                	<td>학생</td>
+<%
+                }
+				else
+				{
+%>
+					<td>선생님</td>
+<%
+				}
+
+%>
             </tr>
 <%
 	}

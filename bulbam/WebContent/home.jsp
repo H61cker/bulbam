@@ -43,7 +43,7 @@
 	<form id="logoutForm" method="post" action="logout.do">
 	</form>
   <div class="container">
-    <<header>
+    <header>
       <ul class="nav nav-tabs">
      	 <div style="margin-bottom:10px">
       		<a class="navbar-brand navbar-left" href="#">
