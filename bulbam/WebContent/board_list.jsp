@@ -121,7 +121,7 @@ System.out.println(lastPage);
 	<%
 		if(firstPage != 1){
 	%>
-		<span>[이전]</span>
+		<span><a href="board_list.jsp?page<%= firstPage-1 %>">[이전]</a></span>
 	<%
 		}
 	%>
@@ -130,14 +130,29 @@ System.out.println(lastPage);
 	for (int i = firstPage ; i <= lastPage ; i++)
 	{
 %>
-		<span><a href="board_list.jsp?page=<%= i %>"><%= i %></a></span>
+	<%
+		if(currentPage == i){
+			
+	%>
+			<span style="font-weight:bold"><a href="board_list.jsp?page=<%= i %>"><%= i %></a></span>
+	<%
+		}
+		else{
+	%>		
+			<span><a href="board_list.jsp?page=<%= i %>"><%= i %></a></span>
+	<%
+		}
+	%>
+	
 <% 
 	}
 %>
+
+
 <%
  if(countOfPages>lastPage){
 %>
-		<span>[다음]</span>
+		<span><a href="board_list.jsp?page<%=lastPage+1 %>">[다음]</a></span>
 <%
  }
 %>
