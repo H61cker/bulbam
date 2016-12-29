@@ -33,7 +33,7 @@ if(countOfPages<lastPage){
 	lastPage = countOfPages;
 }
 
-List<BoardList> list = service.BoardList(currentPage);
+List<BoardList> list = service.BoardList(countOfPages);
 
 System.out.println(firstPage);
 System.out.println(lastPage);
@@ -114,7 +114,7 @@ System.out.println(lastPage);
 	
 	</table>
 	
-	<div>
+	<div style="text-align: center;">
 	<%
 		if(firstPage != 1){
 	%>
