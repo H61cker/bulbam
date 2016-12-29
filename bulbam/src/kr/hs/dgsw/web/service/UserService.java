@@ -436,10 +436,10 @@ public final class UserService
 	}
 	
 	/**
-	 * 주어진 날짜에 심야 자습을 신청한 사람들의 목록을 읽어온다.
+	 * 二쇱뼱吏� �궇吏쒖뿉 �떖�빞 �옄�뒿�쓣 �떊泥��븳 �궗�엺�뱾�쓽 紐⑸줉�쓣 �씫�뼱�삩�떎.
 	 * 
-	 * @param date 날짜
-	 * @return 신청자 목록
+	 * @param date �궇吏�
+	 * @return �떊泥��옄 紐⑸줉
 	 */
 	public List<NightStudyRequest> listNightStudy(Date date)
 	{
@@ -536,6 +536,100 @@ public final class UserService
 		return list;
 	}
 
+	public List<NightStudyRequest> NightStudyPerson(int userid)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<NightStudyRequest> list = new LinkedList<NightStudyRequest>();
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT a.id, a.user_id, a.time, b.user_name, b.class, b.grade, b.number  ");
+			sql.append("  FROM nightstudy AS a ");
+			sql.append("  JOIN user AS b ON a.user_id = b.user_id ");
+			sql.append(" WHERE a.user_id = ? ");
+
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setInt(1, userid);
+
+			
+			NightStudyRequest nightStudyRequest = null;
+			
+			rs = pstmt.executeQuery();
+			while (rs.next())
+			{
+				int id = rs.getInt(1);
+				int userId = rs.getInt(2);
+				Date time = rs.getDate(3);
+				String userName = rs.getString(4);
+				int clazz = rs.getInt(5);
+				int grade = rs.getInt(6);
+				int number = rs.getInt(7);
+				
+				nightStudyRequest = new NightStudyRequest();
+				nightStudyRequest.setId(id);
+				nightStudyRequest.setUserId(userId);
+				nightStudyRequest.setTime(time);
+				nightStudyRequest.setUserName(userName);
+				nightStudyRequest.setClazz(clazz);
+				nightStudyRequest.setGrade(grade);
+				nightStudyRequest.setNumber(number);
+				
+				list.add(nightStudyRequest);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return list;
+	}
 	
 	public void Write(String subject, String contents, String writer, String password)
 	{
@@ -917,8 +1011,11 @@ public final class UserService
 		try
 		{
 			UserService userService = new UserService();
-			List<NightStudyRequest> list = userService.listNightStudy(new Date());
-			
+			List<NightStudyRequest> list = userService.NightStudyPerson(10);
+			for (NightStudyRequest item : list)
+			{
+				System.out.println(item.getTime() + "  " + item.getUserName());
+			}
 			System.out.println(list.size());
 		}
 		catch (Exception e)
