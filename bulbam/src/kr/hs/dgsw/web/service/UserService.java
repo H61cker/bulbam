@@ -1005,36 +1005,24 @@ public final class UserService
 		}
 	}
 	
-<<<<<<< HEAD
 	public List<User> listUsers()
-=======
-	public int getCountOfArticles()
->>>>>>> 31240db7c300932133a98876c9faeec4c7803bf4
 	{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-<<<<<<< HEAD
 		
 		List<User> list = new LinkedList<User>();
 
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			
-=======
-		int count = 0;
-		try
-		{
-			Class.forName("com.mysql.jdbc.Driver");
->>>>>>> 31240db7c300932133a98876c9faeec4c7803bf4
 			connection = 
 				DriverManager.getConnection(
 				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
 				"dgsw", "dnrhddltks");
 			
 			StringBuilder sql = new StringBuilder();
-<<<<<<< HEAD
+			
 			sql.append("SELECT * ");
 			sql.append(" FROM user ");
 			
@@ -1058,19 +1046,6 @@ public final class UserService
 				
 				list.add(user);
 			}
-			
-			
-=======
-			sql.append("SELECT count(*) FROM board ");
-			
-			pstmt = connection.prepareStatement(sql.toString());
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				count = rs.getInt(1);
-				
-			}
->>>>>>> 31240db7c300932133a98876c9faeec4c7803bf4
 		}
 		catch (Exception e)
 		{
@@ -1112,11 +1087,78 @@ public final class UserService
 				}
 			}
 		}
-<<<<<<< HEAD
 		return list;
-=======
+
+	}
+	
+	public int getCountOfArticles()
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int count = 0;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = 
+				DriverManager.getConnection(
+				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+				"dgsw", "dnrhddltks");
+			
+			StringBuilder sql = new StringBuilder();
+
+			sql.append("SELECT count(*) FROM board ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+				
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
 		return count;
->>>>>>> 31240db7c300932133a98876c9faeec4c7803bf4
 	}
 	
 	public static void main(String[] args)
