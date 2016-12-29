@@ -75,17 +75,11 @@ List<BoardList> list = service.BoardList(currentPage);
       </ul>
     </header>
     -->
+    <div class="container">
     
     <jsp:include page="navbar_Include.jsp"></jsp:include> <!-- 위에 navbar를 navbar_Include.jsp에 함수화 시킨 후 jsp:include 문으로 가져 와서 도입/변경을 쉽게 하였다.  -->
     
-    <div class="jumbotron" style="margin-top:30px">
-        <h2>자유 익명 게시판</h2>
-        <p class="lead">누구나 자유롭게 익명으로 글을 남기고<br>웹페이지의 기능에 관해 건의할 수 있습니다<br></p>
-
-        <p><a class="btn btn-md btn-success" href="/bulbam/write.jsp" role="button" style="float:right">글쓰기</a></p>
-        
-        
-      </div>
+     <img src="include/img/schoolboard.png" style="margin-top:30px;margin-bottom:30px;width:1140px; height:300px">
 
 	<table class="table table-striped">
 	  <thead>
@@ -190,6 +184,10 @@ List<BoardList> list = service.BoardList(currentPage);
 </nav>
 
 	</div>
+</div>
+
+<div class="container">
+   <p><a class="btn btn-md btn-success" href="/bulbam/write.jsp" role="button" style="float:right">글쓰기</a></p>
 </div>
 
 </body>

@@ -84,14 +84,13 @@
       </ul>
     </header> -->
     
+    <div class="container">
+    
     <jsp:include page="navbar_Include.jsp"></jsp:include>
     
-    <div class="container" style="width:1200px">
-    
-    <p class="margin_top" style="margin-bottom:50px"></p>
-    <div style="margin-bottom:40px; margin-left:90px">
-	<img src="include/img/retryrqlist.png" class="img-rounded" width="1200px" height="400px" style="position:relative; left:-100px">
-	</div>
+    <p class="margin_top" style="margin-bottom:50px; text-align: center;">
+	<img src="include/img/NQlist.png" class="img-rounded" style="position:relative; width:1000px; height:400px">
+	</p>
     
     <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : <!-- </span><span><%= date_format.format(time) %> --><input type="text" id="txt_date" size="12"><input type="button" value="보기" onclick="setDate();"></span> </div>
 	
@@ -137,9 +136,6 @@ else
 <%
 }
 %>
-
-</div>
-
 
      <footer class="text-center margin_top">
         <div class="panel panel-default">

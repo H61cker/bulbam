@@ -7,7 +7,7 @@
 
   <header>
     <ul class="nav nav-tabs" id="nav_bar">
-     	 <div style="margin-bottom:10px">
+     	 <div style="margin-bottom:10px;">
       		<a class="navbar-brand navbar-left" href="#">
                 <img alt="brand" src="include/img/dgsw_logo.png" style="margin-bottom:30px">
             </a>
