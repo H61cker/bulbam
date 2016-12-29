@@ -1,3 +1,4 @@
+<%@page import="kr.hs.dgsw.web.domain.User"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -8,30 +9,19 @@
     pageEncoding="UTF-8"%>
     
 <%
-	String sTime = request.getParameter("time");
-	SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+User user = (User)session.getAttribute("user"); 
+if (user == null)
+{
+	response.sendRedirect("login.jsp");
+	return;
+}
+
+int userId = user.getUserId();
 
 
-	Date time = null;
-	if (sTime == null)
-	{
-		time = new Date();
-	}
-	else
-	{
-		try
-		{
-			time = date_format.parse(sTime);
-		}
-		catch (ParseException e)
-		{
-			time = new Date();
-		}
-		
-	}
 
 	UserService service = UserService.getInstance();
-	List<NightStudyRequest> list = service.listNightStudy(time);
+	List<NightStudyRequest> list = service.NightStudyPerson(userId);
 
 %>
 <!DOCTYPE html>
@@ -54,10 +44,9 @@
       <ul class="nav nav-tabs">
            <li><a href="./home.jsp">홈</a></li>
            <li><a href="./request.jsp">심야자습 신청</a></li>
-           <li class="active"><a href="./list.jsp">신청목록</a></li>
-           <li><a href="./list_private.jsp">개인별 신청이력</a></li>
+           <li><a href="./list.jsp">신청목록</a></li>
+           <li class="active"><a href=".list_private.jsp">개인별 신청 이력</a></li>
            <li><a href="./board_list.jsp">자유 게시판</li>
-
             <a class="navbar-brand navbar-right" href="./home.jsp">
                 <img alt="brand" src="include/img/dgsw_logo.png">
             </a>
@@ -68,7 +57,12 @@
 	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
 	</div>
     
-    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : </span><span><%= date_format.format(time) %></span> </div>
+    <div class="alert alert-info" style="text-align: right" role="alert"> 
+    <span>
+      	<td><%= user.getUserName() %></td>
+        <td><%= user.getGrade() %>학년 <%= user.getClazz() %>반 <%= user.getNumber() %>번</td>
+            
+	</span> </div>
 	
 	<p>
 <%

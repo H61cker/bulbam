@@ -557,6 +557,7 @@ public final class UserService
 			sql.append("  FROM nightstudy AS a ");
 			sql.append("  JOIN user AS b ON a.user_id = b.user_id ");
 			sql.append(" WHERE a.user_id = ? ");
+			sql.append(" ORDER BY a.time DESC ");
 
 			pstmt = connection.prepareStatement(sql.toString());
 			pstmt.setInt(1, userid);
