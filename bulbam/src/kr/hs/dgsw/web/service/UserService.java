@@ -723,8 +723,6 @@ public final class UserService
     		sql.append("SELECT `id`,`title`,`content`,`write_time`,`writer`");
     		sql.append("  FROM board ORDER BY id DESC");
 
-
-			
 			BoardList boardList= null;
 			
 			pstmt = connection.prepareStatement(sql.toString());
@@ -1007,11 +1005,16 @@ public final class UserService
 		}
 	}
 	
+<<<<<<< HEAD
 	public List<User> listUsers()
+=======
+	public int getCountOfArticles()
+>>>>>>> 31240db7c300932133a98876c9faeec4c7803bf4
 	{
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+<<<<<<< HEAD
 		
 		List<User> list = new LinkedList<User>();
 
@@ -1019,12 +1022,19 @@ public final class UserService
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			
+=======
+		int count = 0;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+>>>>>>> 31240db7c300932133a98876c9faeec4c7803bf4
 			connection = 
 				DriverManager.getConnection(
 				"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
 				"dgsw", "dnrhddltks");
 			
 			StringBuilder sql = new StringBuilder();
+<<<<<<< HEAD
 			sql.append("SELECT * ");
 			sql.append(" FROM user ");
 			
@@ -1050,6 +1060,17 @@ public final class UserService
 			}
 			
 			
+=======
+			sql.append("SELECT count(*) FROM board ");
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				count = rs.getInt(1);
+				
+			}
+>>>>>>> 31240db7c300932133a98876c9faeec4c7803bf4
 		}
 		catch (Exception e)
 		{
@@ -1091,7 +1112,11 @@ public final class UserService
 				}
 			}
 		}
+<<<<<<< HEAD
 		return list;
+=======
+		return count;
+>>>>>>> 31240db7c300932133a98876c9faeec4c7803bf4
 	}
 	
 	public static void main(String[] args)
