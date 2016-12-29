@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form action="WriterServlet.do" method="POST">
-		제목 : <input type="text" name="subject"><br><br>
+		제목 : <input type="text" name="subject""><br><br>
 		내용 : <textarea cols="50" rows="5" name="contents"></textarea><br><br>
 		작성자 : <input type="text" name="writer"><br><br>
 		암호 : <input type="text" name="password"><br><br>
