@@ -34,11 +34,11 @@
   <div class="container">
     <header>
       <ul class="nav nav-tabs">
-           <li><a href="./home.jsp">Home</a></li>
-           <li class="active"><a href="./request.jsp">Night</a></li>
-           <li><a href="./list.jsp">List</a></li>
-            <a class="navbar-brand navbar-right" href="#">
-                <img alt="brand" src="include/img/dgsw_logo.png">
+           <li><a href="./home.jsp">홈</a></li>
+           <li class="active"><a href="./request.jsp">심야자습 신청</a></li>
+           <li><a href="./list.jsp">신청목록</a></li>
+           <li><a href="./list_private.jsp">개인별 신청이력</a></li>
+           <li><a href="./board_list.jsp">자유 게시판</a></li>
             </a>
       </ul>
     </header>
