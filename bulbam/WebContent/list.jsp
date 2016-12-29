@@ -55,9 +55,15 @@
   <script type="text/javascript">
   	
   	$(document).ready(function() {
-  		console.log("aaaa");
+  		$("#txt_date").val("<%= date_format.format(time) %>");
+  		//$("#txt_date").datepicker();
   	});
   
+  	function setDate()
+  	{
+  		var time = $("#txt_date").val();
+  		location.href="list.jsp?time=" + time;
+  	}
   </script>
 </head>
 <body>
@@ -82,7 +88,7 @@
 	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
 	</div>
     
-    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : <!-- </span><span><%= date_format.format(time) %> --><input type="text" id="txt_date"></span> </div>
+    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : <!-- </span><span><%= date_format.format(time) %> --><input type="text" id="txt_date" size="12"><input type="button" value="보기" onclick="setDate();"></span> </div>
 	
 	<p>
 <%
