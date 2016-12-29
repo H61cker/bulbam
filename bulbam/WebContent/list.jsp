@@ -47,6 +47,18 @@
       margin-top: 50px;
     }
   </style>
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <script type="text/javascript">
+  	
+  	$(document).ready(function() {
+  		console.log("aaaa");
+  	});
+  
+  </script>
 </head>
 <body>
   <div class="container">
@@ -70,7 +82,7 @@
 	<img src="include/img/rqlist.png" class="img-rounded" width="970px" height="350px">
 	</div>
     
-    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : </span><span><%= date_format.format(time) %></span> </div>
+    <div class="alert alert-info" style="text-align: right" role="alert"> <span>날짜 : <!-- </span><span><%= date_format.format(time) %> --><input type="text" id="txt_date"></span> </div>
 	
 	<p>
 <%
