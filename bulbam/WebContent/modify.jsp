@@ -34,7 +34,7 @@
 <body>
 	<br><br><br>
 	
-	<form action="Modify.do" method="POST">
+	<form name=Modify action="Modify.do" method="POST" onsubmit="return check()">
 	<aritcle id="board_area">
 	    <div class="panel panel-info">
 	        <div class="panel-heading">

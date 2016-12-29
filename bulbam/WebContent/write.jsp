@@ -7,9 +7,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>WritePage!</title>
+<script type="text/javascript">
+	function check(){
+	 
+	var subject = document.theForm.subject.value.trim();
+	if (subject == "")
+	{
+		alert("제목을 입력하세요.");
+		return false;
+	}
+	
+	var contents = document.theForm.contents.value.trim();
+	if(contents == "")
+	{
+		 alert("내용을 입력하세요.");
+		 return false;
+	}
+	
+	var writer = document.theForm.writer.value.trim();
+	if(writer == "")
+	{
+		alert("작성자를 입력하세요.");
+		return false;
+	}
+	
+	var password = document.theForm.password.value.trim();
+	if(password == "")
+	{
+		alert("암호를 입력하세요.");
+		return false;
+	}
+	
+	
+	return true;
+	
+	
+}
+</script>
+
 </head>
 <body>
-	<form action="WriterServlet.do" method="POST">
+	<form name="theForm" action="WriterServlet.do" method="POST"  onsubmit="return check()">
 		제목 : <input type="text" name="subject""><br><br>
 		내용 : <textarea cols="50" rows="5" name="contents"></textarea><br><br>
 		작성자 : <input type="text" name="writer"><br><br>
