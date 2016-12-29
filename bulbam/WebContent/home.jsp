@@ -53,6 +53,7 @@
            <li class="active"><a href="./home.jsp">홈</a></li>
            <li><a href="./request.jsp">심야자습 신청</a></li>
            <li><a href="./list.jsp">신청목록</a></li>
+           <li><a href="./list_private.jsp">개인별 신청이력</a></li>
            <li><a href="./board_list.jsp">자유 게시판</a></li>
            <li style="margin-top:10px; margin-left:330px"><%= user.getUserName() %> 님 환영합니다!</li>
     </header>  
