@@ -790,6 +790,96 @@ public final class UserService
 		return list;
 	}
 	
+	public List<BoardList> BoardList(int page)
+	{
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<BoardList> list = new LinkedList<BoardList>();
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+    		connection = 
+    			DriverManager.getConnection(
+    			"jdbc:mysql://114.108.167.90/dgsw_sms?useUnicode=true&characterEncoding=utf8", 
+    			"dgsw", "dnrhddltks");
+    		
+    		StringBuilder sql = new StringBuilder();
+    		sql.append(" SELECT `id`,`title`,`content`,`write_time`,`writer` ");
+    		sql.append(" FROM board ORDER BY id DESC ");
+    		sql.append(" limit ?, 10 ");
+
+			BoardList boardList= null;
+			
+			pstmt = connection.prepareStatement(sql.toString());
+			pstmt.setInt(1, (page-1)*10);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next())
+			{
+				int id = rs.getInt(1);
+				String title = rs.getString(2);
+				String content = rs.getString(3);
+				Date write_time = rs.getDate(4);
+				String writer = rs.getString(5);
+				
+				boardList = new BoardList();
+				boardList.setId(id);
+				boardList.setTitle(title);
+				boardList.setContent(content);
+				boardList.setDate(write_time);
+				boardList.setWriter(writer);
+				
+				list.add(boardList);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if (rs != null)
+			{
+				try
+				{
+					rs.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null)
+			{
+				try
+				{
+					pstmt.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			if (connection != null)
+			{
+				try
+				{
+					connection.close();
+				}
+				catch (SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return list;
+	}
+	
 	public Board getBoard(int uri)
 	{
 		Connection connection = null;
