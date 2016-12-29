@@ -42,6 +42,15 @@
             </a>
       </ul>
     </header>
+    
+    <div class="jumbotron" style="margin-top:30px">
+        <h2>자유 익명 게시판</h2>
+        <p class="lead">누구나 자유롭게 익명으로 글을 남기고<br>웹페이지의 기능에 관해 건의할 수 있습니다<br></p>
+
+        <p><a class="btn btn-md btn-success" href="/bulbam/write.jsp" role="button" style="float:right">글쓰기</a></p>
+        
+        
+      </div>
 
 	<table class="table table-striped">
 	  <thead>
@@ -74,9 +83,6 @@
 	</table>
 </div>
 
-<form action="/bulbam/write.jsp" style="margin-left:1475px">
-	<button type="submit" class="btn btn-success btn-sm btn-block" style="width:55px;height:30px">글쓰기</button>
-</form>
 </body>
 <!-- body 끝 -->
 
