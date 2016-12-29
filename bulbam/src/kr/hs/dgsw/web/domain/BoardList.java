@@ -10,6 +10,7 @@ public class BoardList
 	private String writer;
 	private Date write_time;
 	private String content;
+	private int views;
 	
 //	Id
 	public int getId()
@@ -64,6 +65,14 @@ public class BoardList
 	public void setContent(String content)
 	{
 		this.content= content;
+	}
+
+	public int getViews() {
+		return views;
+	}
+
+	public void setViews(int views) {
+		this.views = views;
 	}
 	
 }

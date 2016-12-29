@@ -94,6 +94,7 @@ System.out.println(lastPage);
 		     <th>제 목</th>
 		     <th>글쓴이</th>
 		     <th>작성날짜</th>
+		     <th>조회수</th>
 		   </tr>
 	   </thead>
 	  <tbody>
@@ -108,6 +109,7 @@ System.out.println(lastPage);
 	            	<td><a href="board_view.jsp?id=<%= nt.getId() %>"><%= nt.getTitle() %></a></td>
 	            	<td><%= nt.getWriterV() %></td>
 	            	<td><%= nt.getDate() %></td>
+	            	<td><%= nt.getViews() %></td>
 	            </tr>
 				<%
 	            	}

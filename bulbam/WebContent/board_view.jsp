@@ -20,6 +20,7 @@
 	UserService service = UserService.getInstance();
 	Board board = service.getBoard(uri);
 	
+	
 	System.out.println(board.getPassword());
 	
 %>
