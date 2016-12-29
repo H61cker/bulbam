@@ -59,11 +59,11 @@
 	%>
 	
 	<p class="margin_top"></p>
-    <img src="include/img/cancel.png" width="1140px" class="img-rounded">
+    <img src="include/img/cancel.png" width="1140px">
     
     <form class="margin_top" action="request_cancel.do" method="post">
     	
-    	<button type="submit" class="btn btn-danger btn-lg btn-block"style="line-height:1.0em;font-size:23px;width:1140px;height:45px;position:absolute;top:440px;right:390px;"> 
+    	<button type="submit" class="btn btn-danger btn-lg btn-block" style="font-size:23px;width:1140px;height:45px;"> 
     	▶심야 자율 학습 취소◀
     	</button>
     	
@@ -79,7 +79,7 @@
 
     <form class="margin_top" action="request.do" method="post">
     
-  		<button type="submit" class="btn btn-success btn-lg btn-block"style="line-height:1.0em;font-size:23px;width:1140px;height:45px;position:absolute;top:440px;right:390px;"> 
+  		<button type="submit" class="btn btn-success btn-lg btn-block" style="font-size:23px;width:1140px;height:45px;"> 
 		▶심야 자율 학습 신청◀
       	</button>
 
@@ -87,8 +87,9 @@
     <%
 	}
     %>
+   </div>
 
-     <footer class="text-center margin_top" style="position:absolute;top:550px;left:670px">
+     <footer class="text-center" style="margin-top:100px">
         <div class="panel panel-default">
           <div class="panel-body text-center">
               All Copyright Reserved 2016- DGSW Web Server<br>
@@ -96,7 +97,6 @@
           </div>
         </div>
      </footer>
-  </div>
   
  <!--    <footer class="text-center margin_top">
         <div class="panel panel-default" style="position:absolute;top:600px;left:680px">
